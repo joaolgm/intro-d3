@@ -14,6 +14,8 @@
       </div>
       <div class="row" id="pros_dados">
       </div>
+      <div class="row" id="pros_dadinhos">
+      </div>
     </div>
 
 <!-- PARTE 1: select + append  -->
@@ -24,14 +26,22 @@
     </script>
 
 <!-- PARTE 2: dados -->
-<!--     <script type="text/javascript">
+      <script type="text/javascript">
       var dados = [2, 3, 5, 7, 11, 13, 17];
       d3.select("#pros_dados") // #xpto == elemento com id xpto
         .selectAll("p")
       .data(dados)
       .enter()
         .append("p")
-        .text("Parágrafo criado a partir dos dados.") -->
+        .text("Parágrafo criado a partir dos dados.");
+
+      var dadinho = [2, 4, 6, 3, 2, 8, 0];
+      d3.select("#pros_dadinhos")
+        .selectAll("h1")
+      .data(dadinho)
+      .enter()
+        .append("h1")
+        .text("Parágrafo criado a partir de dadinho.");
     </script>
   </body>
 </html>
