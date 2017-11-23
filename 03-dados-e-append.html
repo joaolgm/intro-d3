@@ -35,13 +35,14 @@
         .append("p")
         .text("Parágrafo criado a partir dos dados.");
 
-      var dadinho = [2, 4, 6, 3, 2, 8, 0];
+      var dadinho = [20, 40, 60, 30, 20, 80];
       d3.select("#pros_dadinhos")
         .selectAll("h1")
       .data(dadinho)
       .enter()
         .append("h1")
-        .text("Parágrafo criado a partir de dadinho.");
+        .text(function(y) {return "Valor: " + y;})
+        .style("font-size", function(d){ return 2*d + "px" });
     </script>
   </body>
 </html>
