@@ -17,7 +17,7 @@
 
     <style>
       .mychart rect {
-        fill: steelblue;
+        fill: green;
       }
 
       .mychart text {
@@ -25,13 +25,18 @@
         font: 10px sans-serif;
         text-anchor: end;
       }
+
+      .mychart rect:hover {
+        background-color: red;
+        color: red;
+      }
     </style>
 
     <script type="text/javascript">
       "use strict"
-      var dados = [40, 80, 96, 76, 23, 42, 32, 90, 11, 22, 14];
+      var dados = [40, 80, 96, 76, 23, 42, 32, 90, 11, 22, 14, 30, 20, 50, 42];
       var largura = 1100,
-          altura = 500;
+          altura = 1100;
 
       var svg = d3.select('#chart')
                 .append('svg')
