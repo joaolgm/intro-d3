@@ -36,7 +36,14 @@
     "use strict"
 
     function desenhaBarras(dados) {
-      // Preencha aqui.
+      var largura = 1000,
+           altura = 1000;
+      var grafico = d3.select('#chart')
+                    .append('svg')
+                    .attr('width', largura)
+                    .attr('height', altura);
+
+      svg.selectAll('')
     }
 
     d3.tsv('dados/alphabet.tsv', function(dados) {
