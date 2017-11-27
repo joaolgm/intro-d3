@@ -19,7 +19,7 @@
 
   <style>
     .mychart rect {
-      fill: steelblue;
+      fill: green;
     }
 
     .mychart rect:hover {
@@ -35,15 +35,50 @@
   <script type="text/javascript">
     "use strict"
 
-    function desenhaBarras(dados) {
-      var largura = 1000,
-           altura = 1000;
-      var grafico = d3.select('#chart')
-                    .append('svg')
-                    .attr('width', largura)
-                    .attr('height', altura);
 
-      svg.selectAll('')
+    var dados = "https://d3js.org/d3.v4.min.js";
+    var alturaSVG = 400, larguraSVG = 900;
+    var	margin = {top: 10, right: 20, bottom:30, left: 45},
+        larguraVis = larguraSVG - margin.left - margin.right,
+        alturaVis = alturaSVG - margin.top - margin.bottom;
+
+    var grafico = d3.select('#chart')
+                    .append('svg')
+                      .attr('width', larguraVis + margin.left + margin.right)
+                      .attr('height', alturaVis + margin.top + margin.bottom)
+                    .append('g')
+                      .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
+    var x = d3.scaleBand()
+            .domain(dados.map((dado, indice) => dado.letra))
+            .rangeRound([0,300])
+            .padding([0.2]);
+
+    var y = d3.scaleLinear()
+            .domain([0,100])
+            .rangeRound([360,0]);
+
+    function desenhaBarras(dados) {
+      grafico.selectAll('g')
+            .data(dados)
+              .enter()
+            .append('rect')
+            .attr('x', d => x(d.letra))
+            .attr('width', x.bandwidth())
+            .attr('y', d => y(d.valor))
+            .attr('height', (d) => alturaVis - y(d.valor));
+
+      grafico.append("g")
+             .attr("class", "x axis")
+             .attr("transform", "translate(0," + alturaVis + ")")
+             .call(d3.axisBottom(x));
+
+      grafico.append('g')
+             .attr('transform', 'translate(0,0)')
+             .call(d3.axisLeft(y))
+
+      grafico.append("text")
+             .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
+             .text("Frequencia");
     }
 
     d3.tsv('dados/alphabet.tsv', function(dados) {
