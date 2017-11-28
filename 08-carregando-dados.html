@@ -36,28 +36,28 @@
     "use strict"
 
 
-    var dados = "https://d3js.org/d3.v4.min.js";
-    var alturaSVG = 400, larguraSVG = 900;
-    var	margin = {top: 10, right: 20, bottom:30, left: 45},
-        larguraVis = larguraSVG - margin.left - margin.right,
-        alturaVis = alturaSVG - margin.top - margin.bottom;
-
-    var grafico = d3.select('#chart')
-                    .append('svg')
-                      .attr('width', larguraVis + margin.left + margin.right)
-                      .attr('height', alturaVis + margin.top + margin.bottom)
-                    .append('g')
-                      .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
-    var x = d3.scaleBand()
-            .domain(dados.map((dado, indice) => dado.letra))
-            .rangeRound([0,300])
-            .padding([0.2]);
-
-    var y = d3.scaleLinear()
-            .domain([0,100])
-            .rangeRound([360,0]);
-
     function desenhaBarras(dados) {
+      var alturaSVG = 900, larguraSVG = 1300;
+      var	margin = {top: 10, right: 20, bottom:30, left: 45},
+          larguraVis = larguraSVG - margin.left - margin.right,
+          alturaVis = alturaSVG - margin.top - margin.bottom;
+
+      var grafico = d3.select('#chart')
+                      .append('svg')
+                        .attr('width', larguraVis + margin.left + margin.right)
+                        .attr('height', alturaVis + margin.top + margin.bottom)
+                      .append('g')
+                        .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
+
+      var x = d3.scaleBand()
+              .domain(dados.map((dado, indice) => dado.letra))
+              .rangeRound([0,1200])
+              .padding([0.2]);
+
+      var y = d3.scaleLinear()
+              .domain([0,0.2])
+              .rangeRound([860,0]);
+
       grafico.selectAll('g')
             .data(dados)
               .enter()
