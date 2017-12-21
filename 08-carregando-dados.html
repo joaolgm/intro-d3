@@ -19,7 +19,11 @@
 
   <style>
     .mychart rect {
+<<<<<<< HEAD
       fill: green;
+=======
+      fill: steelblue;
+>>>>>>> 03ac2119b8bd3b291246e66e438ba46051056a16
     }
 
     .mychart rect:hover {
@@ -35,6 +39,7 @@
   <script type="text/javascript">
     "use strict"
 
+<<<<<<< HEAD
 
     function desenhaBarras(dados) {
       var alturaSVG = 900, larguraSVG = 1300;
@@ -79,6 +84,10 @@
       grafico.append("text")
              .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
              .text("Frequencia");
+=======
+    function desenhaBarras(dados) {
+      // Preencha aqui.
+>>>>>>> 03ac2119b8bd3b291246e66e438ba46051056a16
     }
 
     d3.tsv('dados/alphabet.tsv', function(dados) {
