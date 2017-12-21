@@ -141,7 +141,7 @@
                             .range([ 2, 25 ])
             d3.selectAll("g.depto")
               .select("circle")
-              //.transition().duration(700) // descomente aqui para testar
+              .transition().duration(700) // descomente aqui para testar
               .attr("r", d => radiusScale(d[dimensao]))
           }
         }
